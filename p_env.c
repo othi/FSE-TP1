@@ -27,13 +27,13 @@ char* getEnv (char* pid)
   if (fgets(line_env, 2048, file_env) != NULL)
   {
     fclose(file_env);
-    for (i=0; i<2048; i++)
+    for (i=0; !(line_env[i] == '\0' && line_env[i+1] == '\0'); i++)
         if (line_env[i] == '\0')
             line_env[i] = '\n';
     return line_env;
   }
   else
-    perror(path); 
+    perror(path);
   return NULL;
 }
 
